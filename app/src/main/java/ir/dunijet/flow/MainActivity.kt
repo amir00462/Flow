@@ -3,7 +3,9 @@ package ir.dunijet.flow
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -12,15 +14,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val viewModel = MainViewModel( MainRepository() )
 
-        viewModel.dataStudents.observe(this) {
-            Log.v("testFlow" , it.name)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dataStudents.collect {
+                    Log.v("testFlow" , it.name)
+                }
+            }
         }
-
-//        lifecycleScope.launch {
-//            viewModel.dataStudents.collect {
-//                Log.v("testFlow" , it.name)
-//            }
-//        }
 
     }
 }

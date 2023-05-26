@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class MainViewModel(mainRepository: MainRepository) {
-    val dataStudents: LiveData<StudentUi> = mainRepository.getAllFromApi()
+    val dataStudents: Flow<StudentUi> = mainRepository.getAllFromApi()
             .map {
                 StudentUi(it.id, it.name, it.familyName, it.grade)
             }
@@ -20,7 +20,7 @@ class MainViewModel(mainRepository: MainRepository) {
             }
             .catch {
                 Log.v("testFlow", it.message ?: "null message")
-            }.asLiveData()
+            }
 
 
 }
