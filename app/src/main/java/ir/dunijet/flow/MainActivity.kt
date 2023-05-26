@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
@@ -15,11 +16,12 @@ class MainActivity : AppCompatActivity() {
         val viewModel = MainViewModel( MainRepository() )
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.dataStudents.collect {
-                    Log.v("testFlow" , it.name)
-                }
-            }
+                    viewModel.dataStudents
+                        .flowWithLifecycle(lifecycle , Lifecycle.State.STARTED)
+                        .collect {
+                        Log.v("testFlow" , it.name)
+                    }
+
         }
 
     }
