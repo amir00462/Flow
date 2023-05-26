@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class MainRepository {
+
     fun randomStudent(): Student {
         val id = (1..10000).random()
 

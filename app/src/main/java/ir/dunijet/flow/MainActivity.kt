@@ -4,11 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +12,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val viewModel = MainViewModel( MainRepository() )
 
-        lifecycleScope.launch {
-            viewModel.dataStudents.collect {
-                Log.v("testFlow" , it.name)
-            }
+        viewModel.dataStudents.observe(this) {
+            Log.v("testFlow" , it.name)
         }
+
+//        lifecycleScope.launch {
+//            viewModel.dataStudents.collect {
+//                Log.v("testFlow" , it.name)
+//            }
+//        }
 
     }
 }
