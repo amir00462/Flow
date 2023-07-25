@@ -16,6 +16,9 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel :MainViewModel
+wefwfwfewef
+
+    wefewfw
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
