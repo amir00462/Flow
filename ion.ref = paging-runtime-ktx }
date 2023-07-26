@@ -1,0 +1,12 @@
+* [33m02bec68[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m new commit
+* [33mfefb57a[m Some Changes
+* [33mb4abf26[m CollectLatest , Collect , CollectIndexed
+* [33m339882c[m Flow on another dispatchers
+* [33m431c8b8[m stateFlow
+* [33m0a5b51f[m make Flow data lifeCycleAware using flowWithLifecycle()
+* [33m6babfa3[m make Flow data lifeCycleAware using repeatOnLifecycle(){}
+* [33m5259035[m make Flow data lifeCycleAware using .asLiveData()
+* [33m5e6c780[m make change in flow in viewModel
+* [33m5ea2a8c[m use flow in mainActivity
+* [33m2888b0e[m add flow in viewModel
+* [33ma1dcca4[m Initial commit
